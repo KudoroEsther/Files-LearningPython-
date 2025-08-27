@@ -20,3 +20,11 @@ def borrow_book(title):
             data.save_books()
             return f"You have borrowed '{book[title]}"
     return "Book not available."
+
+def return_book(title):
+    for book in data.get_books():
+        if book["titlle"].lower() == title.lower() and not book["available"]:
+            book["available"] = True
+            data.save_books()
+            return f"You have returned '{book[title]}'"
+    return "Book not found or borrowed"
