@@ -83,14 +83,68 @@
 # # bio.update({'Name': name})
 
 #Super market price list
-items = ["Sneakers", "Mars", "Water"]
-prices = []
+# items = ["Sneakers", "Mars", "Water"]
+# prices = []
 
-for i in items:
-    price = int(input(f"Enter the price for {i}: "))
-    prices.append(price)
+# for i in items:
+#     price = int(input(f"Enter the price for {i}: "))
+#     prices.append(price)
 
-print("ITEM \t PRICE")
-for x , y in zip(items, prices):
-    print(f"{x}: {y}")
-print(prices)
+# print("ITEM \t PRICE")
+# for x , y in zip(items, prices):
+#     print(f"{x}: {y}")
+# print(prices)
+
+
+#Compulsory task in dictionary
+"""
+Collect personal details like name, age, and gender then store in a dictionary
+in a dictionary store academic score for a fix set of subject nested within the main dictionary
+store guardian information like name, phone number, and address nested with the main dictionary
+store hobbies without duplicates, probably use sets
+automatically calculate the average score and intials using slicing
+"""
+
+student_info = {"basic_info": None, "academic_info": None, "guardian_info": None, "hobbies": None, "initials": None}
+
+#Accepting student's personal info
+name = input("Please enter your name: ").strip().title()
+age = int(input("Please enter your age: "))
+gender = input("Please enter your gender: ").strip()
+initials = [i[0] for i in name.split(" ")]
+
+subjects = ["Math", "English", "Yoruba"]
+scores = []
+
+hobbies = []
+
+guard_name = input("Please enter your guardian's name: ").strip().title()
+phone_number = input("Please enter your guardian's phone number: ")
+
+for i in subjects:
+    score = int(input(f"Please input the score for {i}: "))
+    scores.append(score)
+academics = {subj: scor for subj,scor in zip(subjects, scores)}
+
+for h in range(3):
+    hobby =  input("Please enter your hobby: ")
+    hobbies.append(hobby)
+set_hobbies = set(hobbies)
+
+#Adding values to the dictionary
+student_info["basic_info"] = {"Name":name, "Age": age, "Gender": gender}
+student_info["academic_info"] = academics
+student_info["guardian_info"] = {"Guardian_Name": guard_name, "Guardian_number": phone_number}
+student_info["hobbies"] = list(set_hobbies)
+student_info["intials"] = initials
+
+
+#Output
+print("STUDENT BIODATA".center(50, "."))
+
+print(f"Name: \t{student_info["basic_info"]["Name"]}")
+print(f"Age: \t{student_info["basic_info"]["Age"]}")
+print(f"Gender: \t{student_info["basic_info"]["Gender"]}")
+
+
+print(student_info)
