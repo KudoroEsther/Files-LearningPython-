@@ -22,7 +22,7 @@ def sign_up(username, password):
     # print(dict_1)
 
     with open(path, "a", encoding="utf-8", newline="") as f:
-        fieldnames = ["Username", "Password"]
+        fieldnames = dict_1.keys()
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         dict_1[username] = password
         writer.writeheader()
